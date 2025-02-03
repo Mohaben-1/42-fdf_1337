@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:58:57 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/01/25 13:20:16 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:46:37 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,35 @@ int	ft_check_arg_and_get_fd(int ac, char *file)
 	return (fd);
 }
 
+void	ft_get_width(char *file, int fd, t_map *map)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	if (line == NULL)
+		p_exit("No data found!\n");
+	map->width = count_words(line);
+	while (line)
+	{
+		if (count_words(line) != map->width)
+		{
+			free(line);
+			p_exit("Found wrong line length!");
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	fd = open(file, O_RDONLY);
+}
+
 void	ft_get_width_height(char *file, int fd, t_map *map)
 {
 	char	*line;
 
 	map->height = 0;
+	ft_get_width(file, fd, map);
 	line = get_next_line(fd);
-	if (line == NULL)
-		p_exit("No data found!\n");
-	map->width = count_words(line, ' ');
 	while (line)
 	{
 		map->height++;

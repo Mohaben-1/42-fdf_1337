@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:01:31 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/01/27 13:00:00 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:47:58 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ typedef struct s_map
 	int		scale;
 	int		x_offset;
 	int		y_offset;
-	double	rotation_x;
-	double	rotation_y;
-	double	rotation_z;
 	int		iso;
 	int		z_min;
 	int		z_max;
+	double	rotation_x;
+	double	rotation_y;
+	double	rotation_z;
+	int		autorotate;
 }	t_map;
 
 typedef struct s_prjc
@@ -61,7 +62,9 @@ typedef struct s_bresenham
 	int	dx;
 	int	dy;
 	int	err;
-	int	steps[2];
+	int	step_x;
+	int	step_y;
+	int	swap_axes;
 }	t_bresenham;
 
 size_t	ft_strlen(const char *s);
@@ -79,7 +82,7 @@ void	ft_bresenham(t_map *map, t_prjc p1, t_prjc p2, int color);
 void	put_pixel(t_map *map, int x, int y, int color);
 void	ft_draw(t_map *map);
 void	*ft_memset(void *s, int c, size_t n);
-int		count_words(char *s, char c);
+int		count_words(char *s);
 void	ft_get_width_height(char *file, int fd, t_map *map);
 void	ft_handle_z_color(char *source, t_point *point);
 int		ft_check_arg_and_get_fd(int ac, char *file);
@@ -102,5 +105,7 @@ double	to_radians(double degrees);
 void	menu(t_map map);
 void	ft_set_z_min_max(t_map *map);
 int		get_color(t_point grid, int z_min, int z_max);
+void	free_split(char **s);
+int		ft_auto_rotation(t_map *map);
 
 #endif

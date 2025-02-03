@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 19:11:29 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/01/23 20:09:52 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:50:50 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,16 @@ void	ft_apply_rotation(double *x, double *y, double *z, t_map *map)
 	rotate_x(y, z, to_radians(map->rotation_x));
 	rotate_y(x, z, to_radians(map->rotation_y));
 	rotate_z(x, y, to_radians(map->rotation_z));
+}
+
+int	ft_auto_rotation(t_map *map)
+{
+	if (map->autorotate)
+	{
+		map->rotation_y += 0.5;
+		map->rotation_z += 0.5;
+		map->rotation_x += 0.5;
+		ft_draw(map);
+	}
+	return (0);
 }

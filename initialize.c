@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:03:11 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/01/27 13:16:08 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:50:00 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ t_point	**ft_fill_2d_array(int fd, t_map map)
 		while (x < map.width)
 		{
 			ft_handle_z_color(split[x], &grid[y][x]);
-			free(split[x]);
 			x++;
 		}
-		free(split);
+		free_split(split);
 		y++;
 	}
-	return (close(fd), grid);
+	close(fd);
+	return (grid);
 }
 
 void	ft_mlx_init_helper(t_map *map)
@@ -83,22 +83,6 @@ void	ft_mlx_init(t_map *map)
 	map->rotation_z = 1;
 	map->iso = 1;
 	ft_set_z_min_max(map);
-}
-
-void	free_2d_array(t_point **grid, int height)
-{
-	int	i;
-
-	i = 0;
-	if (!grid)
-		return ;
-	while (i < height)
-	{
-		free(grid[i]);
-		i++;
-	}
-	free(grid);
-	grid = NULL;
 }
 
 int	handle_close(t_map *map)

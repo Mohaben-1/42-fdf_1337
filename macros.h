@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:40:46 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/01/27 13:03:50 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:50:23 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define MINUS_KEY 		78
 # define P_KEY			35
 # define I_KEY 			34
+# define R_KEY			15
 # define NUM_1 			83
 # define NUM_3 			85
 # define NUM_4 			86

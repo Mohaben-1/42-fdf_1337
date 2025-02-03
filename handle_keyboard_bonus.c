@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:09:12 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/01/25 11:54:56 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:48:46 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	handle_input(int keycode, t_map *map)
 		map->iso = 1;
 		ft_draw(map);
 	}
+	else if (keycode == R_KEY)
+		map->autorotate = !map->autorotate;
 	return (0);
 }
 
